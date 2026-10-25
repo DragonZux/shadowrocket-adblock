@@ -1,75 +1,51 @@
-/******************************
-[rewrite_local]
-# > Wink Mở khóa tư cách thành viên vĩnh viễn
-^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json url script-response-body
-[mitm] 
-hostname = api-sub.meitu.com
-*******************************/
-
-var lienHe = "t.me/Mhale_retro";
-var _a = {};
-(function (options) {
-    options._decode = "http://www.sojson.com/javascriptobfuscator.html";
-})(_a);
+// Wink VIP (Meitu) - Mở khóa tính năng VIP & Siêu độ nét
 var body = $response.body;
-var obj = JSON.parse(body);
-obj.data = {
-    active_sub_type: 2,
-    account_type: 1,
-    sub_type_name: "续期",
-    active_sub_order_id: "7069961436604422668",
-    trial_period_invalid_time: "",
-    current_order_invalid_time: "32662173600000",
-    active_order_id: "7069961436340181123",
-    limit_type: 0,
-    active_sub_type_name: "续期",
-    use_vip: true,
-    have_valid_contract: true,
-    derive_type_name: "普通会员",
-    derive_type: 1,
-    in_trial_period: false,
-    is_vip: true,
-    membership: {
-        id: "4",
-        display_name: "Wink会员",
-        level: 1,
-        level_name: "普通会员"
-    },
-    active_promotion_status_list: [2],
-    sub_type: 2,
-    account_id: "1230010086",
-    invalid_time: "32662195199000",
-    valid_time: "1569664800000",
-    active_product_id: "0",
-    active_promotion_status: 2,
-    show_renew_flag: true
-};
-$done({
-    body: JSON.stringify(obj)
-});
-;
-;
-(function (_0xcbd8x3, _0xcbd8x4, _0xcbd8x5, _0xcbd8x6, _0xcbd8x7, _0xcbd8x8) {
-    _0xcbd8x8 = "undefined";
-    _0xcbd8x6 = function (_0xcbd8x9) {
-        if (typeof alert !== _0xcbd8x8) {
-        alert(_0xcbd8x9);
-        }
-        ;
-        if (typeof console !== _0xcbd8x8) {
-        console.log(_0xcbd8x9);
-        }
-    };
-    _0xcbd8x5 = function (_0xcbd8xa, _0xcbd8x3) {
-        return _0xcbd8xa + _0xcbd8x3;
-    };
-    _0xcbd8x7 = _0xcbd8x5("删除", _0xcbd8x5(_0xcbd8x5("版本号，js会定", "期弹窗，"), "还请支持我们的工作"));
+if (!body) {
+    $done({});
+} else {
+    var obj;
     try {
-        _0xcbd8x3 = lienHe;
-        if (typeof _0xcbd8x3 === _0xcbd8x8 || _0xcbd8x3 !== _0xcbd8x5("jsjia", "mi.com")) {
-        _0xcbd8x6(_0xcbd8x7);
-        }
+        obj = JSON.parse(body);
     } catch (e) {
-        _0xcbd8x6(_0xcbd8x7);
+        $done({});
     }
-})({});
+
+    if (obj && typeof obj === 'object') {
+        obj.data = obj.data || {};
+
+        // 1. Kích hoạt VIP vĩnh viễn
+        obj.data.is_vip = true;
+        obj.data.use_vip = true;
+        obj.data.have_valid_contract = true;
+        obj.data.in_trial_period = false;
+        obj.data.vip_type = 1;
+        obj.data.derive_type_name = "普通会员";
+        obj.data.derive_type = 1;
+        obj.data.active_sub_type = 2;
+        obj.data.active_sub_type_name = "续期";
+        obj.data.trial_period_invalid_time = 4092599349000;
+        obj.data.current_order_invalid_time = 4092599349000;
+        obj.data.valid_time = 1569664800000;
+        obj.data.invalid_time = 4092599349000;
+        obj.data.show_renew_flag = true;
+
+        if (!obj.data.membership || typeof obj.data.membership !== 'object') {
+            obj.data.membership = {};
+        }
+        obj.data.membership.id = "4";
+        obj.data.membership.display_name = "Wink会员";
+        obj.data.membership.level = 1;
+        obj.data.membership.level_name = "普通会员";
+
+        // 2. Thao tác trên /user/show
+        if ($request.url.indexOf('/user/show') !== -1) {
+            obj.data.vip_icon = "https://xximg1.meitudata.com/6948531818264286440.png";
+            obj.data.follower_count = 999000;
+            obj.data.fan_count = 999000;
+            obj.data.favorites_count = 999000;
+            obj.data.be_like_count = 999000;
+        }
+    }
+
+    $done({ body: JSON.stringify(obj) });
+}

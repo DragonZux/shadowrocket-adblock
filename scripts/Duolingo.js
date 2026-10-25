@@ -36,17 +36,20 @@
     data.health.unlimitedHeartsAvailable = true;
     data.health.hearts = 5;
     data.health.eligibleForFreeRefill = true;
+    data.health.secondsUntilNextHeart = 0;
 
-    // 2. Kích hoạt Super / Plus
+    // 2. Kích hoạt Super / Plus / Max
     data.hasPlus = true;
+    data.hasSuper = true;
 
     if (!data.trackingProperties || typeof data.trackingProperties !== 'object') {
       data.trackingProperties = {};
     }
     data.trackingProperties.has_item_gold_subscription = true;
     data.trackingProperties.has_plus = true;
+    data.trackingProperties.has_super = true;
 
-    // 3. Kích hoạt gói Max / Gold
+    // 3. Kích hoạt gói Max / Gold trong shopItems
     if (!data.shopItems || typeof data.shopItems !== 'object') {
       data.shopItems = {};
     }

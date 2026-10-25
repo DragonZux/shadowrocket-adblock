@@ -20,3 +20,4 @@ if (token.test($request.url)) {
 }
 
 $done({body : JSON.stringify(obj)});
+
