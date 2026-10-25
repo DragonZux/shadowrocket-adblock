@@ -1,0 +1,39 @@
+#!name=DragonZux AdBlock
+#!desc=Chặn quảng cáo YouTube và các mạng quảng cáo, theo dõi phổ biến. Không mở khóa gói trả phí, không chạy script bên ngoài.
+#!author=DragonZux
+#!homepage=https://github.com/DragonZux/shadowrocket-adblock
+
+[Rule]
+# YouTube: chặn QUIC (UDP) để app phải đi HTTPS thường, nhờ đó MITM mới lọc được quảng cáo
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+
+# Mạng quảng cáo Google (quảng cáo trong app và web)
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN,adservice.google.com,REJECT
+
+# Quảng cáo trong app của Facebook và Unity
+DOMAIN,an.facebook.com,REJECT
+DOMAIN,unityads.unity3d.com,REJECT
+DOMAIN,auction.unityads.unity3d.com,REJECT
+
+# Thống kê, theo dõi
+DOMAIN-SUFFIX,app-measurement.com,REJECT
+
+[Url Rewrite]
+# Link quảng cáo và thống kê quảng cáo của YouTube
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+# Luồng video có gắn quảng cáo (&oad)
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+# Bỏ tham số ctier=L để lấy luồng video không chèn quảng cáo
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+[Map Local]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
+
+[MITM]
+hostname = %APPEND%, *.googlevideo.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com
