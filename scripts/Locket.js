@@ -11,7 +11,7 @@ if (!obj.subscriber.entitlements) {
   obj.subscriber.entitlements = {};
 }
 
-var locketData = {
+var commonData = {
   is_sandbox: false,
   ownership_type: "PURCHASED",
   billing_issues_detected_at: null,
@@ -31,9 +31,22 @@ var locketEntitlement = {
   expires_date: "2099-12-18T01:04:17Z"
 };
 
-// Luôn kích hoạt gói Gold cho Locket và Pro cho các app RevenueCat khác
-obj.subscriber.subscriptions["com.locket02.premium.yearly"] = locketData;
+var scannerEntitlement = {
+  grace_period_expires_date: null,
+  purchase_date: "2024-07-28T01:04:17Z",
+  product_identifier: "com.readdle.Scanner.subscription.year30",
+  expires_date: "2099-12-18T01:04:17Z"
+};
+
+// 1. Locket Gold
+obj.subscriber.subscriptions["com.locket02.premium.yearly"] = commonData;
 obj.subscriber.entitlements["Gold"] = locketEntitlement;
+
+// 2. Scanner Pro (Readdle)
+obj.subscriber.subscriptions["com.readdle.Scanner.subscription.year30"] = commonData;
+obj.subscriber.entitlements["plus"] = scannerEntitlement;
+
+// 3. Các app RevenueCat khác dùng pro/vip
 obj.subscriber.entitlements["pro"] = locketEntitlement;
 obj.subscriber.entitlements["vip"] = locketEntitlement;
 

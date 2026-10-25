@@ -1,5 +1,5 @@
-#!name=DragonZux 10in1 VIP ProMax
-#!desc=Chặn quảng cáo YouTube & Mở khóa Premium: YouTube, Spotify, Locket Gold, SoundCloud Go+, PicsArt, Wink VIP, CamScanner, Kinemaster, Truecaller, BeautyPlus, Alight Motion, Sub-Store.
+#!name=DragonZux All In One VIP ProMax
+#!desc=Chặn quảng cáo YouTube & Mở khóa Premium: YouTube, Spotify, Locket Gold, Duolingo Super/Max (vô hạn tim), XMind VIP, WPS Office SVIP, CamScanner SVIP, Scanner Pro, SoundCloud Go+, PicsArt, Wink VIP, Kinemaster, Truecaller, BeautyPlus, Alight Motion, Sub-Store.
 #!author=DragonZux
 #!homepage=https://github.com/DragonZux/shadowrocket-adblock
 
@@ -63,9 +63,18 @@ Camscanner = type=http-response,pattern=https:\/\/(api|api-cs.*)\.intsig\.net\/p
 #BeautyPlus
 BeautyPlus = type=http-response,pattern=https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance),requires-body=true,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/scripts/BeautyPlus.js
 
-#Locket Gold
+#Locket Gold & Scanner Pro (RevenueCat)
 revenuecat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=true,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/scripts/Locket.js
 deleteHeader = type=http-request,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/scripts/deleteHeader.js,timeout=60
 
+#Duolingo Super & Vô hạn Tim
+Duolingo = type=http-response,pattern=^https?:\/\/(?:[a-zA-Z0-9-]+\.)?duolingo\.[^\/]+\/\d{4}-\d{2}-\d{2}\/users\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/scripts/Duolingo.js
+
+#XMind
+XMind = type=http-response,pattern=^https?:\/\/(?:www\.)?xmind\..*\/.+\/(devices|token\/.+),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/scripts/Xmind.js
+
+#WPS Office
+WPS = type=http-response,pattern=^https?:\/\/(vas|account|drive)\.wps\.(cn|com)\/(query\/api\/.+\/list_purchase_info|api\/(v\d\/spaces|users\/.+\/overview)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/scripts/WPS.js
+
 [MITM]
-hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, api-account.kinemasters.com, ap*.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, spclient.wg.spotify.com, *spclient.spotify.com
+hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, api-account.kinemasters.com, ap*.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, spclient.wg.spotify.com, *spclient.spotify.com, *.duolingo.com, *.duolingo.cn, *xmind.*, *.wps.cn, *.wps.com

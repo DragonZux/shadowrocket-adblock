@@ -1,6 +1,6 @@
-# DragonZux 10in1 VIP ProMax (Shadowrocket)
+# DragonZux All In One VIP ProMax (Shadowrocket)
 
-Bộ cấu hình và Module toàn diện dành cho **Shadowrocket trên iOS**: Chặn sạch quảng cáo YouTube và mở khóa tính năng Premium / VIP của hơn 10 ứng dụng phổ biến nhất.
+Bộ cấu hình và Module toàn diện dành cho **Shadowrocket trên iOS**: Chặn sạch quảng cáo YouTube và mở khóa tính năng Premium / VIP của hơn 15 ứng dụng phổ biến nhất.
 
 > [!TIP]
 > Toàn bộ các script xử lý được lưu trữ trực tiếp trên repo này, đảm bảo hoạt động độc lập, tốc độ tải nhanh và không lo bị lỗi do link bên thứ ba biến mất.
@@ -12,13 +12,17 @@ Bộ cấu hình và Module toàn diện dành cho **Shadowrocket trên iOS**: C
 | Ứng dụng | Tính năng mở khóa / Tác dụng |
 |---|---|
 | **YouTube** | Chặn quảng cáo video & trang chủ, phát trong nền (Background), PiP, phụ đề/lời bài hát tiếng Việt |
+| **Duolingo** | Mở khóa Super / Max, **Trái tim vô hạn (Unlimited Hearts)**, không quảng cáo |
+| **Locket** | Mở khóa Locket Gold (quay video 15s/30s, tải ảnh/video HD, huy hiệu Gold) |
 | **Spotify** | Mở khóa Premium (chuyển bài tự do, phát mọi bài từ tìm kiếm & thư viện đã thích) |
-| **Locket** | Mở khóa Locket Gold |
+| **XMind** | Mở khóa bản quyền Pro / VIP trọn đời (vẽ sơ đồ tư duy không giới hạn) |
+| **WPS Office** | Mở khóa Siêu hội viên (Super VIP), full tính năng chuyển đổi PDF, ghép file, nhận diện OCR |
+| **CamScanner** | Mở khóa SVIP (quét HD, xuất PDF không watermark, nhận diện OCR không giới hạn) |
+| **Scanner Pro** | Mở khóa Scanner Pro Plus (Readdle) |
 | **SoundCloud** | Mở khóa SoundCloud Go+ (âm thanh chất lượng cao HQ, không quảng cáo âm thanh) |
 | **PicsArt** | Mở khóa PicsArt Gold (công cụ chỉnh sửa nâng cao & AI) |
-| **CamScanner** | Mở khóa SVIP (quét HD, xuất PDF không watermark, nhận diện OCR không giới hạn) |
 | **Wink** | Mở khóa Wink VIP (bộ lọc làm đẹp video, khôi phục chất lượng AI) |
-| **Kinemaster** | Mở khóa Kinemaster Premium |
+| **Kinemaster** | Mở khóa Kinemaster Premium (không watermark, xuất video HD) |
 | **Truecaller** | Mở khóa Truecaller Gold / Premium |
 | **BeautyPlus** | Mở khóa tính năng VIP & tài sản trả phí |
 | **Alight Motion** | Mở khóa bản quyền tài khoản Pro |
