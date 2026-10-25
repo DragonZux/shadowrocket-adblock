@@ -1,42 +1,80 @@
-# Shadowrocket AdBlock
+# DragonZux 10in1 VIP ProMax (Shadowrocket)
 
-Module Shadowrocket chặn quảng cáo YouTube và các mạng quảng cáo, theo dõi phổ biến (Google Ads, Facebook Audience Network, Unity Ads, Firebase Analytics).
+Bộ cấu hình và Module toàn diện dành cho **Shadowrocket trên iOS**: Chặn sạch quảng cáo YouTube và mở khóa tính năng Premium / VIP của hơn 10 ứng dụng phổ biến nhất.
 
-- Chỉ dùng rule có sẵn của Shadowrocket, **không chạy script bên ngoài**.
-- **Không** mở khóa gói trả phí của app nào.
-- Chỉ giải mã HTTPS (MITM) cho các tên miền YouTube cần lọc quảng cáo.
+> [!TIP]
+> Toàn bộ các script xử lý được lưu trữ trực tiếp trên repo này, đảm bảo hoạt động độc lập, tốc độ tải nhanh và không lo bị lỗi do link bên thứ ba biến mất.
 
-## Link cài
+---
 
-```
-https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/adblock.sgmodule
-```
+## 🌟 Danh sách tính năng hỗ trợ
 
-## Cách cài
-
-1. Mở **Shadowrocket → Config (Cấu hình) → Modules → dấu +**, dán link ở trên rồi lưu.
-2. Bật module vừa thêm.
-3. Bật giải mã HTTPS:
-   - Vào **Config → HTTPS Decryption**, bật lên và chọn **Generate New CA Certificate**, rồi **Install Certificate**.
-   - Vào **Cài đặt iOS → Đã tải về hồ sơ** để cài chứng chỉ.
-   - Vào **Cài đặt → Cài đặt chung → Giới thiệu → Cài đặt tin cậy chứng nhận**, bật tin cậy cho chứng chỉ của Shadowrocket.
-4. Kết nối Shadowrocket, sau đó tắt hẳn app YouTube rồi mở lại.
-
-## Cập nhật
-
-Vào **Config → Modules**, kéo xuống để tải lại bản mới nhất.
-
-## Module làm gì
-
-| Phần | Tác dụng |
+| Ứng dụng | Tính năng mở khóa / Tác dụng |
 |---|---|
-| `[Rule]` | Chặn QUIC của YouTube và chặn tên miền quảng cáo, theo dõi |
-| `[Url Rewrite]` | Chặn link quảng cáo YouTube và lấy luồng video không chèn quảng cáo |
-| `[Map Local]` | Trả về rỗng cho yêu cầu tải quảng cáo trước video |
-| `[MITM]` | Danh sách tên miền được giải mã: `*.googlevideo.com`, `www.youtube.com`, `s.youtube.com` |
+| **YouTube** | Chặn quảng cáo video & trang chủ, phát trong nền (Background), PiP, phụ đề/lời bài hát tiếng Việt |
+| **Spotify** | Mở khóa Premium (chuyển bài tự do, phát mọi bài từ tìm kiếm & thư viện đã thích) |
+| **Locket** | Mở khóa Locket Gold |
+| **SoundCloud** | Mở khóa SoundCloud Go+ (âm thanh chất lượng cao HQ, không quảng cáo âm thanh) |
+| **PicsArt** | Mở khóa PicsArt Gold (công cụ chỉnh sửa nâng cao & AI) |
+| **CamScanner** | Mở khóa SVIP (quét HD, xuất PDF không watermark, nhận diện OCR không giới hạn) |
+| **Wink** | Mở khóa Wink VIP (bộ lọc làm đẹp video, khôi phục chất lượng AI) |
+| **Kinemaster** | Mở khóa Kinemaster Premium |
+| **Truecaller** | Mở khóa Truecaller Gold / Premium |
+| **BeautyPlus** | Mở khóa tính năng VIP & tài sản trả phí |
+| **Alight Motion** | Mở khóa bản quyền tài khoản Pro |
+| **Sub-Store** | Tích hợp công cụ đồng bộ & quản lý proxy Sub-Store |
 
-## Lưu ý
+---
 
-- YouTube hay thay đổi cách chèn quảng cáo, nên có lúc quảng cáo vẫn lọt qua. Khi đó hãy tải lại module để lấy bản mới.
-- Module chạy theo tên miền nên dùng được ở mọi nước có thể cài Shadowrocket và truy cập YouTube.
-- Nếu app nào bị lỗi sau khi bật module, tắt module đi để kiểm tra rồi báo lại ở mục [Issues](https://github.com/DragonZux/shadowrocket-adblock/issues).
+## 🚀 Cách cài đặt
+
+Bạn có thể chọn **1 trong 2 cách** tùy nhu cầu:
+
+### Cách 1: Cài đặt dạng Module (Khuyên dùng nếu bạn đã có cấu hình riêng)
+
+1. Mở **Shadowrocket** → chọn mục **Cấu hình (Config)**.
+2. Nhấn vào mục **Modules** (ở phía dưới).
+3. Nhấn dấu **+** ở góc trên bên phải, dán đường link sau rồi lưu:
+   ```
+   https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/adblock.sgmodule
+   ```
+4. Bật Module vừa thêm.
+
+---
+
+### Cách 2: Cài đặt dạng File Cấu hình (Config trọn gói)
+
+1. Mở **Shadowrocket** → mục **Cấu hình (Config)**.
+2. Nhấn dấu **+** ở góc trên cùng, dán link sau:
+   ```
+   https://raw.githubusercontent.com/DragonZux/shadowrocket-adblock/main/10in1_Vip_ProMax.conf
+   ```
+3. Nhấn vào file cấu hình vừa tải về và chọn **Sử dụng cấu hình**.
+
+---
+
+## 🔐 Bắt buộc: Kích hoạt Giải mã HTTPS (MITM)
+
+Để Shadowrocket lọc được quảng cáo và mở khóa app, bạn bắt buộc phải bật MITM:
+
+1. Trong **Shadowrocket** → **Cấu hình (Config)** → Nhấn vào chữ **(i)** cạnh file cấu hình đang dùng.
+2. Kéo xuống tìm mục **HTTPS Decryption (Giải mã HTTPS)** và bật lên.
+3. Chọn **Tạo chứng chỉ mới (Generate New CA Certificate)** → chọn tiếp **Cài đặt chứng chỉ (Install Certificate)**.
+4. Mở **Cài đặt của iPhone/iPad**:
+   - Vào mục **Đã tải về hồ sơ (Profile Downloaded)** → nhấn **Cài đặt**.
+   - Tiếp tục vào: **Cài đặt → Cài đặt chung → Giới thiệu → Cài đặt tin cậy chứng nhận** (General → About → Certificate Trust Settings).
+   - Gạt **BẬT** tin cậy cho chứng chỉ của Shadowrocket.
+5. Quay lại Shadowrocket, kết nối VPN rồi tắt hẳn các app cần dùng trong đa nhiệm và mở lại để tận hưởng!
+
+---
+
+## 🔄 Cập nhật
+
+- Khi có bản cập nhật mới trên GitHub, trong Shadowrocket bạn chỉ cần vào mục **Modules** hoặc **Config**, vuốt xuống để làm mới tải bản mới nhất.
+
+---
+
+## ⚠️ Lưu ý
+
+- Đây là cấu hình phục vụ mục đích học tập, thử nghiệm và tối ưu hóa trải nghiệm mạng cá nhân.
+- Nếu gặp lỗi trên ứng dụng bất kỳ, bạn có thể tắt tạm thời Module hoặc gửi phản hồi tại mục [Issues](https://github.com/DragonZux/shadowrocket-adblock/issues).
