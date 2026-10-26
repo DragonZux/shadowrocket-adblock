@@ -21,9 +21,9 @@ Bộ cấu hình và Module toàn diện dành cho **Shadowrocket trên iOS**: C
 | **Scanner Pro** | Mở khóa Scanner Pro Plus (Readdle) |
 | **SoundCloud** | Mở khóa SoundCloud Go+ (âm thanh chất lượng cao HQ, không quảng cáo âm thanh) |
 | **PicsArt** | Mở khóa PicsArt Gold (công cụ chỉnh sửa nâng cao & AI) |
-| **Wink** | Mở khóa Wink VIP (bộ lọc làm đẹp video, khôi phục chất lượng AI) |
+| **Wink** | Mở khóa Wink VIP+ / SVIP (gói cao cấp nhất: làm đẹp video, siêu độ nét AI 4K, xuất video không giới hạn) |
 | **Kinemaster** | Mở khóa Kinemaster Premium (không watermark, xuất video HD) |
-| **Truecaller** | Mở khóa Truecaller Gold / Premium |
+| **Truecaller** | Mở khóa Truecaller Gold (huy hiệu Gold, Gold Caller ID, xem ai vào trang cá nhân, chặn spam nâng cao) |
 | **BeautyPlus** | Mở khóa tính năng VIP & tài sản trả phí |
 | **Alight Motion** | Mở khóa bản quyền tài khoản Pro |
 | **Sub-Store** | Tích hợp công cụ đồng bộ & quản lý proxy Sub-Store |
@@ -75,6 +75,17 @@ Bạn có thể chọn **1 trong 2 cách** tùy nhu cầu:
 ## 🔄 Cập nhật
 
 - Khi có bản cập nhật mới trên GitHub, trong Shadowrocket bạn chỉ cần vào mục **Modules** hoặc **Config**, vuốt xuống để làm mới tải bản mới nhất.
+
+---
+
+## 💡 Mẹo sử dụng một số App đặc thù
+
+- **Locket Gold (Video 15s & 30s):**
+  - **Quay trực tiếp trên ứng dụng:** Giữ nút chụp camera tối đa là **15 giây** (đây là giới hạn giao diện quay camera trực tiếp cố định của ứng dụng Locket đối với mọi tài khoản).
+  - **Đăng video 30 giây:** Bấm vào **biểu tượng Thư viện ảnh (Camera Roll)** ở góc dưới bên trái màn hình camera Locket → Chọn video bạn đã quay sẵn bằng camera iPhone (độ dài tối đa 30 giây) để đăng lên Widget.
+- **Wink VIP+ & Truecaller Gold:**
+  - Sau khi cập nhật cấu hình/module trong Shadowrocket, hãy vuốt tắt hẳn app chạy ngầm (Force Close).
+  - Mở lại app: Với Wink nếu chưa nhảy VIP+, vào mục **Tài khoản / Cài đặt** → nhấn **Khôi phục giao dịch mua (Restore Purchases)** là sẽ nhận trọn bộ **VIP+** vĩnh viễn.
 
 ---
 

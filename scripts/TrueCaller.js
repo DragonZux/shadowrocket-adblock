@@ -1,8 +1,7 @@
-function findUrl(_reg) {
-    if (_reg.test($request.url)) {
-        return $request.url;
-    }
-}
+// Truecaller Gold VIP Unlocker
+var url = ($request && $request.url) ? $request.url : "";
+var body = $response.body;
+
 const features = [
     { id: "siri_search", rank: 1, status: "Included" },
     { id: "no_ads", rank: 2, status: "Included" },
@@ -16,55 +15,58 @@ const features = [
     { id: "premium_support", rank: 16, status: "Included" },
     { id: "live_chat_support", rank: 17, status: "Included" },
     { id: "premium_app_icon", rank: 19, status: "Included" },
-    { id: "gold_caller_id", rank: 20, status: "Included" } 
+    { id: "gold_caller_id", rank: 20, status: "Included" }
 ];
 
-var obj;
-switch ($request.url) {
-    case findUrl(/subscriptions\/status/):
-        obj = {
-            expire: "9999-01-09T01:01:01Z",
-            start: "2024-01-07T02:32:04Z",
-            paymentProvider: "Apple",
-            isExpired: false,
-            isGracePeriodExpired: false,
-            subscriptionStatus: "INITIAL_BUY",
-            inAppPurchaseAllowed: true,
-            product: {
-                id: "renewable.gold.annual",
-                sku: "renewable.gold.annual",
-                contentType: "subscription",
-                productType: "GoldYearly",
-                isFreeTrial: true
-            },
-            tier: { id: "gold", feature: features }
-        }
-        break;
-    case findUrl(/products\/apple/):
-        obj = {
-            "tier": [
-                {
-                "id": "gold",
-                "product": [
+var obj = null;
+
+if (/subscriptions/i.test(url)) {
+    obj = {
+        expire: "2099-12-31T23:59:59Z",
+        start: "2024-01-01T00:00:00Z",
+        paymentProvider: "Apple",
+        isExpired: false,
+        isGracePeriodExpired: false,
+        subscriptionStatus: "INITIAL_BUY",
+        inAppPurchaseAllowed: true,
+        product: {
+            id: "renewable.gold.annual",
+            sku: "renewable.gold.annual",
+            contentType: "subscription",
+            productType: "GoldYearly",
+            isFreeTrial: true
+        },
+        tier: { id: "gold", feature: features }
+    };
+} else if (/products\/apple/i.test(url)) {
+    obj = {
+        tier: [
+            {
+                id: "gold",
+                product: [
                     {
-                    "productType": "GoldYearly",
-                    "id": "renewable.gold.annual",
-                    "sku": "renewable.gold.annual",
-                    "contentType": "subscription",
-                    "rank": 6,
-                    "paymentProvider": "Apple",
-                    "clientProductMetadata": {
-                        "selectionRank": 5,
-                        "displayOrder": 5,
-                        "isEntitledPremiumScreenProduct": false
-                    }
+                        productType: "GoldYearly",
+                        id: "renewable.gold.annual",
+                        sku: "renewable.gold.annual",
+                        contentType: "subscription",
+                        rank: 6,
+                        paymentProvider: "Apple",
+                        clientProductMetadata: {
+                            selectionRank: 5,
+                            displayOrder: 5,
+                            isEntitledPremiumScreenProduct: false
+                        }
                     }
                 ],
-                "feature": features,
-                "rank": 5
-                }
-            ]
-        }
-    break;
+                feature: features,
+                rank: 5
+            }
+        ]
+    };
 }
-$done({body: JSON.stringify(obj)});
+
+if (obj) {
+    $done({ body: JSON.stringify(obj) });
+} else {
+    $done({ body: body });
+}
