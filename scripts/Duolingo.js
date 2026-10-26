@@ -28,32 +28,41 @@
     }
   };
 
-  if (data && typeof data === 'object') {
+  function patchUser(u) {
+    if (!u || typeof u !== 'object') return;
+
     // 1. Trái tim vô hạn (Unlimited Hearts)
-    if (!data.health || typeof data.health !== 'object') {
-      data.health = {};
+    if (!u.health || typeof u.health !== 'object') {
+      u.health = {};
     }
-    data.health.unlimitedHeartsAvailable = true;
-    data.health.hearts = 5;
-    data.health.eligibleForFreeRefill = true;
-    data.health.secondsUntilNextHeart = 0;
+    u.health.unlimitedHeartsAvailable = true;
+    u.health.hearts = 5;
+    u.health.eligibleForFreeRefill = true;
+    u.health.secondsUntilNextHeart = 0;
 
     // 2. Kích hoạt Super / Plus / Max
-    data.hasPlus = true;
-    data.hasSuper = true;
+    u.hasPlus = true;
+    u.hasSuper = true;
 
-    if (!data.trackingProperties || typeof data.trackingProperties !== 'object') {
-      data.trackingProperties = {};
+    if (!u.trackingProperties || typeof u.trackingProperties !== 'object') {
+      u.trackingProperties = {};
     }
-    data.trackingProperties.has_item_gold_subscription = true;
-    data.trackingProperties.has_plus = true;
-    data.trackingProperties.has_super = true;
+    u.trackingProperties.has_item_gold_subscription = true;
+    u.trackingProperties.has_plus = true;
+    u.trackingProperties.has_super = true;
 
     // 3. Kích hoạt gói Max / Gold trong shopItems
-    if (!data.shopItems || typeof data.shopItems !== 'object') {
-      data.shopItems = {};
+    if (!u.shopItems || typeof u.shopItems !== 'object') {
+      u.shopItems = {};
     }
-    data.shopItems = Object.assign({}, data.shopItems, CUSTOM_SHOP_ITEMS);
+    u.shopItems = Object.assign({}, u.shopItems, CUSTOM_SHOP_ITEMS);
+  }
+
+  if (data && typeof data === 'object') {
+    patchUser(data);
+    if (data.users && Array.isArray(data.users)) {
+      data.users.forEach(patchUser);
+    }
   }
 
   $done({ body: JSON.stringify(data) });

@@ -1,4 +1,4 @@
-// Wink VIP (Meitu) - Mở khóa tính năng VIP & Siêu độ nét
+// Wink VIP (Meitu) - Mở khóa tính năng VIP & Siêu độ nét AI
 var body = $response.body;
 if (!body) {
     $done({});
@@ -11,34 +11,49 @@ if (!body) {
     }
 
     if (obj && typeof obj === 'object') {
+        obj.code = 0;
         obj.data = obj.data || {};
 
-        // 1. Kích hoạt VIP vĩnh viễn
-        obj.data.is_vip = true;
-        obj.data.use_vip = true;
-        obj.data.have_valid_contract = true;
-        obj.data.in_trial_period = false;
-        obj.data.vip_type = 1;
-        obj.data.derive_type_name = "普通会员";
-        obj.data.derive_type = 1;
-        obj.data.active_sub_type = 2;
-        obj.data.active_sub_type_name = "续期";
-        obj.data.trial_period_invalid_time = 4092599349000;
-        obj.data.current_order_invalid_time = 4092599349000;
-        obj.data.valid_time = 1569664800000;
-        obj.data.invalid_time = 4092599349000;
-        obj.data.show_renew_flag = true;
+        // 1. Dữ liệu VIP chi tiết tương thích mọi phiên bản Wink iOS
+        var vipData = {
+            active_sub_type: 2,
+            account_type: 1,
+            sub_type_name: "续期",
+            active_sub_order_id: "7069961436604422668",
+            trial_period_invalid_time: "4092599349000",
+            current_order_invalid_time: "4092599349000",
+            active_order_id: "7069961436340181123",
+            limit_type: 0,
+            active_sub_type_name: "续期",
+            use_vip: true,
+            have_valid_contract: true,
+            derive_type_name: "普通会员",
+            derive_type: 1,
+            in_trial_period: false,
+            is_vip: true,
+            membership: {
+                id: "4",
+                display_name: "Wink会员",
+                level: 1,
+                level_name: "普通会员"
+            },
+            active_promotion_status_list: [2],
+            sub_type: 2,
+            account_id: "1230010086",
+            invalid_time: "4092599349000",
+            valid_time: "1569664800000",
+            active_product_id: "0",
+            active_promotion_status: 2,
+            show_renew_flag: true,
+            vip_type: 1
+        };
 
-        if (!obj.data.membership || typeof obj.data.membership !== 'object') {
-            obj.data.membership = {};
-        }
-        obj.data.membership.id = "4";
-        obj.data.membership.display_name = "Wink会员";
-        obj.data.membership.level = 1;
-        obj.data.membership.level_name = "普通会员";
+        // Gộp toàn bộ thông số VIP
+        Object.assign(obj.data, vipData);
 
         // 2. Thao tác trên /user/show
         if ($request.url.indexOf('/user/show') !== -1) {
+            obj.data.vip_type = 1;
             obj.data.vip_icon = "https://xximg1.meitudata.com/6948531818264286440.png";
             obj.data.follower_count = 999000;
             obj.data.fan_count = 999000;
